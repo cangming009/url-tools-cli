@@ -1,3 +1,4 @@
+"""B站/YouTube视频字幕提取CLI工具"""
 from __future__ import annotations
 
 import json
@@ -11,12 +12,33 @@ from rich.table import Table
 from url_tools_cli import __version__
 from url_tools_cli.extractor import clean_bilibili_url, detect_platform, extract_subtitles
 
+console = Console()
+err_console = Console(stderr=True)
+
+
+def version_callback(value: bool) -> None:
+    """显示版本信息"""
+    if value:
+        console.print(f"url-tools version {__version__}")
+        raise typer.Exit(0)
+
+
 app = typer.Typer(
     name="url-tools",
     help="B站/YouTube视频字幕提取CLI工具",
+    add_completion=False,
+    invoke_without_command=True,
+    context_settings={"allow_interspersed_args": False},
 )
-console = Console()
-err_console = Console(stderr=True)
+
+
+@app.callback()
+def main(
+    ctx: typer.Context,
+    version: bool = typer.Option(False, "--version", help="显示版本信息", callback=version_callback),
+) -> None:
+    """显示版本信息"""
+    pass
 
 
 def _print(s: str = "") -> None:
@@ -24,9 +46,9 @@ def _print(s: str = "") -> None:
     print(s)
 
 
-@app.callback(invoke_without_command=True)
+@app.command()
 def default(ctx: typer.Context) -> None:
-    """Show agent-friendly guide when no subcommand is given."""
+    """显示帮助信息"""
     if ctx.invoked_subcommand is not None:
         return
 

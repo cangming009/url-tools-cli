@@ -2,7 +2,24 @@
 name = "url-tools-cli"
 version = "0.1.0"
 description = "B站/YouTube视频字幕提取CLI工具"
+readme = "README.md"
 requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "cangming", email = "cangming@example.com"}
+]
+keywords = ["bilibili", "youtube", "subtitle", "transcript", "cli", "video-tools"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Text Processing :: General",
+]
 dependencies = [
     "typer>=0.12",
     "rich>=13.0",
@@ -16,6 +33,8 @@ url-tools = "url_tools_cli.cli:app"
 dev = [
     "pytest>=8.0",
     "ruff>=0.3",
+    "build>=1.0",
+    "twine>=4.0",
 ]
 
 [build-system]
@@ -24,6 +43,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
 
 [tool.ruff]
 target-version = "py312"

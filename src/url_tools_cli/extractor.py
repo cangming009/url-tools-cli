@@ -60,6 +60,7 @@ def extract_subtitles(url: str, output_dir: str = "./outputs", use_browser_cooki
     # 构建 yt-dlp 命令
     cmd = [
         "yt-dlp",
+        "--legacy-server-connect",
         "--skip-download",
         "--write-subs",
         "--write-auto-subs",
