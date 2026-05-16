@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: url-tools-cli
+Version: 0.1.0
+Summary: B站/YouTube视频字幕提取CLI工具
+Requires-Python: >=3.12
+Requires-Dist: typer>=0.12
+Requires-Dist: rich>=13.0
+Requires-Dist: yt-dlp>=2024.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.3; extra == "dev"
