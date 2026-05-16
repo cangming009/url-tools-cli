@@ -1,2 +1,0 @@
-[console_scripts]
-url-tools = url_tools_cli.cli:app
